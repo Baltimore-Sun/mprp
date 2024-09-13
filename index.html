@@ -207,8 +207,11 @@ img {
     background-color: #ccc !important;
 }
 
-#mobilecontrols span  {
+#mobilecontrols span, #mapcontrols span  {
 cursor: pointer;
+}
+#mobilecontrols span strong:active {
+background-color: #f2f2f2;
 }
 </style>
 
@@ -396,12 +399,12 @@ preload_image(alts[10].image);
 <div id="mobilecontrols">
     
     <span class="material-symbols-outlined" onclick="back()" style="margin-left:40px;">
-arrow_back
+<strong>arrow_back</strong>
 </span>
 
 
 <span class="material-symbols-outlined" onclick="forward()" style="margin-right:40px;text-align: right;">
-arrow_forward
+<strong>arrow_forward</strong>
 </span>
 
 </div>
