@@ -1,0 +1,413 @@
+<html>
+<head>
+<title>Maryland Piedmont Realiability Project maps</title>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://use.typekit.net/jgv5wnn.css">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+
+
+<style>
+body {
+  font-family: "droid-sans", sans-serif;
+font-weight: 400;
+font-style: normal;
+font-size: .9em;
+}
+img {
+    width: 100%;
+}
+
+
+#mapwrap {
+    
+    max-width: 520px;
+    height: 390px;
+}
+
+
+
+#mapcontrols {
+    height:30px;
+    width: 100%;
+}
+#mapcontrols span {
+    width: calc(7.7% - 1px);
+    padding-top: 3px;
+    height: calc(100% - 3px);
+    display: inline-block;
+    border-right: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+    text-align: center;
+}
+#mapcontrols span:hover { 
+background-color: #f2f2f2;
+}
+#credits {
+clear: both;
+    font-size: .833em;
+
+}
+#credits a {
+  color: rgb(148, 110, 41);
+  text-decoration: none;
+}
+#mobilecontrols {
+display: block;
+padding: 15px 0 95px 0;
+}
+#mobilecontrols span {
+    display: block;
+    width: calc(50% - 40px);
+    float: left;
+    font-size: 3.5em !important;
+    height: 20px;
+}
+
+@media screen and (min-width: 325px) {
+    #mobilecontrols span {
+font-size: 3.4em !important;
+}
+#mobilecontrols {
+padding: 15px 0 85px 0;
+}
+}
+@media screen and (min-width: 345px) {
+    #mobilecontrols span {
+font-size: 3.3em !important;
+}
+#mobilecontrols {
+padding: 15px 0 80px 0;
+}
+}
+
+@media screen and (min-width: 350px) {
+
+#mapcontrols span {
+    width: calc(8% - 1px);
+
+}
+}
+
+@media screen and (min-width: 375px) {
+    #mobilecontrols span {
+font-size: 3.15em !important;
+}
+#mobilecontrols {
+padding: 15px 0 70px 0;
+}
+}
+
+
+
+@media screen and (min-width: 390px) {
+
+    #mobilecontrols span {
+font-size: 3em !important;
+}
+#mobilecontrols {
+padding: 10px 0 60px 0;
+}
+
+}
+
+
+@media screen and (min-width: 410px) {
+
+#mobilecontrols span {
+font-size: 2.7em !important;
+}
+#mobilecontrols {
+padding: 8px 0 53px 0;
+}
+
+}
+
+@media screen and (min-width: 425px) {
+
+#mapcontrols span {
+    width: calc(8.2% - 1px);
+
+}
+
+
+#mobilecontrols span {
+font-size: 1.9em !important;
+}
+#mobilecontrols {
+padding: 5px 0 40px 0;
+}
+
+}
+
+@media screen and (min-width: 445px) {
+
+
+
+#mobilecontrols span {
+font-size: 1.67em !important;
+}
+#mobilecontrols {
+padding: 5px 0 32px 0;
+}
+
+}
+
+@media screen and (min-width: 460px) {
+
+#mobilecontrols {
+    display: none;
+}
+img {
+    margin: 5px 0 2px 0;
+}
+}
+
+@media screen and (min-width: 500px) {
+    img {
+    margin: 0px 0 2px 0;
+}
+#mapcontrols {
+    height:27px;
+
+}
+}
+
+@media screen and (min-width: 525px) {
+
+#mapcontrols {
+    height:25px;
+
+}
+#mapcontrols span {
+    padding-top: 1px;
+    height: calc(100% - 1px);
+    cursor: pointer;
+}
+}
+@media screen and (min-width: 550px) {
+
+#mapcontrols span {
+    width: calc(8.3% - 1px);
+
+}
+}
+
+
+.active {
+    background-color: #ccc;
+}
+.active:hover {
+    background-color: #ccc !important;
+}
+
+#mobilecontrols span  {
+cursor: pointer;
+}
+</style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
+
+<script>
+
+  var counter = 0;
+
+  let alts = [];
+alts.push({
+  alt: "alt-all",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-ALL.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-a",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-A.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-b",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-B.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-c",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-C.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-d",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-D.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-e",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-E.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-f",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-F.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-g",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-G.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-h",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-H.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-i",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-I.jpg?w=1040"
+});
+alts.push({
+  alt: "alt-j",
+  image: "https://www.baltimoresun.com/wp-content/uploads/2024/09/TBS-L-MPRP-ALT-J.jpg?w=1040"
+});
+
+function preload_image(im_url) {
+  let img = new Image();
+  img.src = im_url;
+}
+
+
+
+
+
+    
+    function tabs(n) {
+      
+     
+//set image src to that alts image
+  $("#map").attr("src", alts[n].image);
+
+  //make all tabs white
+  $("#mapcontrols").children().removeClass('active');
+  
+  //set counter 
+  counter = n;
+
+var check = counter + 1;
+
+//make clicked tab gray
+$("#mapcontrols > span:nth-child("+check+")").addClass('active');
+
+    }
+
+var index;
+    
+function buttons() {
+
+  //set image src to that alts image
+  $("#map").attr("src", alts[index].image);
+
+  //make all tabs white
+  $("#mapcontrols").children().removeClass('active');
+  
+  //set counter 
+  counter = index;
+
+var check = counter + 1;
+
+//make clicked tab gray
+$("#mapcontrols > span:nth-child("+check+")").addClass('active');
+}
+
+
+   
+    //forward button logic
+    function forward() {
+
+      //index variable set to counter
+    index = counter;
+
+
+        index = (index + 1) % 11;
+
+        buttons();
+       
+    }
+
+    //backward button logic
+    function back() {
+
+      //index variable set to counter
+     index = counter;
+
+        index = (index - 1 < 0) ? 10 : index - 1;
+
+        buttons();
+        
+    }
+
+  
+
+    $(function() {
+preload_image(alts[0].image);
+preload_image(alts[1].image);
+preload_image(alts[2].image);
+preload_image(alts[3].image);
+preload_image(alts[4].image);
+preload_image(alts[5].image);
+preload_image(alts[6].image);
+preload_image(alts[7].image);
+preload_image(alts[8].image);
+preload_image(alts[9].image);
+preload_image(alts[10].image);
+});
+
+  
+
+    
+    </script>
+
+</head>
+
+
+<body>
+
+<div id="mapwrap">
+    <div id="mapcontrols">
+        <span class="tabs active" onclick="tabs(0)" id="all" data-seq="0">All</span>
+        <span class="tabs" onclick="tabs(1)" id="a" data-seq="1">A</span>
+        <span class="tabs" onclick="tabs(2)" id="b" data-seq="2">B</span>
+        <span class="tabs" onclick="tabs(3)" id="c" data-seq="3">C</span>
+        <span class="tabs" onclick="tabs(4)" id="d" data-seq="4">D</span>
+        <span class="tabs" onclick="tabs(5)" id="e" data-seq="5">E</span>
+        <span class="tabs" onclick="tabs(6)" id="f"data-seq="6">F</span>
+        <span class="tabs" onclick="tabs(7)" id="g" data-seq="7">G</span>
+        <span class="tabs" onclick="tabs(8)" id="h"data-seq="8">H</span>
+        <span class="tabs" onclick="tabs(9)" id="i"data-seq="9">I</span>
+        <span class="tabs" onclick="tabs(10)" id="j" data-seq="10">J</span>
+    </div>
+    <img id="map" src="file:///Users/searley/Desktop/piedmont-comp.jpg">
+
+<div id="mobilecontrols">
+    
+    <span class="material-symbols-outlined" onclick="back()" style="margin-left:40px;">
+arrow_back
+</span>
+
+
+<span class="material-symbols-outlined" onclick="forward()" style="margin-right:40px;text-align: right;">
+arrow_forward
+</span>
+
+</div>
+
+<div id="credits"><strong>Sources:</strong> <a href="https://experience.arcgis.com/experience/332ebce3cff94179b3ef8f0dd635dace" target="_blank">PSEG/Arcgis.com</a>, OpenStreetMap | <strong>Graphics:</strong> Staff</div>
+    </div>
+</body>
+
+</html>
